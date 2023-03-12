@@ -19,19 +19,35 @@ namespace SPCalcApp
             CalcProcess.StartInfo = new ProcessStartInfo("calc.exe");
             //создает новый экземпляр класса ProcessStartInfo и присваивает
             //его свойству StartInfo объекта класса Process с именем CalcProcess
+
+            //альтернативное задание пути к исполняемому файлу для свойства FileName объекта StartInfo: 
+            //CalcProcess.StartInfo.FileName = "calc.exe";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CalcProcess.Start();
+            try
+            {
+                CalcProcess.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error starting Calculator process: " + ex.Message);
+            }
         }
               
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            //CalcProcess.CloseMainWindow();
-            //CalcProcess.Kill();
-            Process.GetProcessesByName("CalculatorApp").First().Kill();
+            try
+            {
+                Process.GetProcessesByName("calc").First().Kill();
+                //calc is correct process name in Windows 7
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error killing Calculator process: " + ex.Message);
+            }
         }
     }
 }
