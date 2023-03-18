@@ -42,7 +42,7 @@ namespace SPCalcApp
             try
             {
                 Process.GetProcessesByName("calc").First().Kill();
-                //calc is correct process name in Windows 7
+                //calc is correct process name in Windows 7, CalculatorApp in Windows 10
             }
             catch (Exception ex)
             {
